@@ -1,0 +1,66 @@
+[
+  {
+  	"active": "true",
+  	"table": "Sucursal",
+  	"fields": "Sucursal, Nombre, Categoria, Estatus",
+  	"join": "",
+  	"filter": "",
+  	"recursiveDateField": ""
+  },
+  {
+  	"active": "true",
+  	"table": "Agente",
+  	"fields": "Agente, Nombre, Categoria, Estatus",
+  	"join": "",
+  	"filter": "",
+  	"recursiveDateField": ""
+  },
+  {
+    "active": "true",
+    "table": "MovTipo",
+    "fields": "Modulo, Mov, Clave",
+    "join": "",
+    "filter": "",
+    "recursiveDateField": ""
+  },
+  {
+    "active": "true",
+    "table": "Cta",
+    "fields": "Cuenta, Rama, Descripcion, Tipo, EsAcreedora, EsAcumulativa, CentrosCostos, Estatus, ClaveSAT",
+    "join": "",
+    "filter": "",
+    "recursiveDateField": ""
+  },
+  {
+    "active": "true",
+    "table": "CentroCostos",
+    "fields": "CentroCostos, Rama, Descripcion, EsAcumulativo, Grupo, SubGrupo, SubSubGrupo, Estatus",
+    "join": "",
+    "filter": "",
+    "recursiveDateField": ""
+  },
+  {
+		"active": "true",
+		"table": "Cte",
+		"fields": "Cte.Cliente, Cte.Nombre, Cte.Tipo, Cte.Categoria, Cte.Estatus, Cte.Estado, Cte.Pais",
+		"join": "Venta WITH (NOLOCK) ON Cte.Cliente = Venta.Cliente",
+		"filter": "Venta.Fecha = dbo.fnFechaSinHora(GETDATE())",
+		"recursiveDateField": ""
+	},
+	{
+		"active": "true",
+		"table": "Art",
+		"fields": "Art.Articulo, Art.Descripcion1, Art.Tipo, Art.Categoria, Art.Grupo, Art.Familia, Art.Linea, Art.GenerarCXP, Art.SeFactura",
+		"join": "VentaD WITH (NOLOCK) ON VentaD.Articulo = Art.Articulo JOIN Venta WITH (NOLOCK) ON Venta.ID = VentaD.ID",
+		"filter": "Venta.Fecha = dbo.fnFechaSinHora(GETDATE())",
+		"recursiveDateField": ""
+	},
+	{
+		"active": "true",
+		"table": "Prov",
+		"fields": "Prov.Proveedor, Prov.Nombre, Prov.Tipo, Prov.Estatus",
+		"join": "Compra WITH (NOLOCK) ON Prov.Proveedor = Compra.Proveedor",
+		"filter": "Compra.Fecha = dbo.fnFechaSinHora(GETDATE())",
+		"recursiveDateField": ""
+	}
+]

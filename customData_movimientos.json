@@ -1,0 +1,34 @@
+[
+  {
+    "active": "true",
+    "table": "Venta",
+    "fields": "Venta.ID, Venta.Empresa, Venta.Mov, Venta.MovID, Venta.FechaEmision, Venta.Concepto, Venta.Moneda, Venta.TipoCambio, Venta.Estatus, Venta.Cliente, Venta.Almacen, Venta.Agente, Venta.Condicion, Venta.Vencimiento, Venta.DescuentoLineal, Venta.Sucursal, Venta.SubModulo, Venta.Importe, Venta.Impuestos, Venta.CostoTotal, Venta.FechaRegistro, Venta.DescuentoGlobal, Venta.Proyecto",
+    "join": "MovTipo WITH (NOLOCK) ON Venta.Mov = MovTipo.Mov AND MovTipo.Modulo = 'VTAS'",
+    "filter": "Venta.Estatus IN ('PENDIENTE','CONCLUIDO','PROCESAR') AND MovTipo.Clave IN ('VTAS.F','VTAS.D','VTAS.N','VTAS.FM','VTAS.FC')",
+    "recursiveDateField": "Venta.FechaEmision"
+  },
+  {
+    "active": "true",
+    "table": "VentaD",
+    "fields": "VentaD.ID, VentaD.Renglon, VentaD.RenglonSub, VentaD.Articulo, VentaD.Cantidad, VentaD.Almacen, VentaD.Precio, VentaD.DescuentoLinea, VentaD.DescuentoImporte, VentaD.Impuesto1, VentaD.Costo, VentaD.ContUso, VentaD.Unidad, VentaD.Factor, VentaD.Agente",
+    "join": "Venta WITH (NOLOCK) ON Venta.ID = VentaD.ID JOIN MovTipo WITH (NOLOCK) ON Venta.Mov = MovTipo.Mov AND MovTipo.Modulo = 'VTAS'",
+    "filter": "Venta.Estatus IN ('PENDIENTE','CONCLUIDO','PROCESAR') AND MovTipo.Clave IN ('VTAS.F','VTAS.D','VTAS.N','VTAS.FM','VTAS.FC')",
+    "recursiveDateField": "Venta.FechaEmision"
+  },
+  {
+    "active": "true",
+    "table": "Cont",
+    "fields": "Cont.ID, Cont.Empresa, Cont.Mov, Cont.MovID, Cont.FechaEmision, Cont.FechaContable, Cont.Proyecto, Cont.Moneda, Cont.TipoCambio, Cont.Estatus, Cont.Ejercicio, Cont.Periodo, Cont.Moneda2, Cont.TipoCambio2",
+    "join": "MovTipo WITH (NOLOCK) ON Cont.Mov = MovTipo.Mov AND MovTipo.Modulo = 'CONT'",
+    "filter": "Cont.Estatus = 'CONCLUIDO' AND MovTipo.clave IN ('CONT.P','CONT.C')",
+    "recursiveDateField": "Cont.FechaEmision"
+  },
+  {
+    "active": "true",
+    "table": "ContD",
+    "fields": "ContD.ID, ContD.Renglon, ContD.RenglonSub, ContD.Cuenta, ContD.SubCuenta, ContD.SubCuenta2, ContD.SubCuenta3, ContD.Debe, ContD.Debe2, ContD.Haber, ContD.Haber2, ContD.Sucursal, ContD.SucursalContable",
+    "join": "Cont WITH (NOLOCK) ON Cont.ID = ContD.ID JOIN MovTipo WITH (NOLOCK) ON Cont.Mov = MovTipo.Mov AND MovTipo.Modulo = 'CONT'",
+    "filter": "Cont.Estatus = 'CONCLUIDO' AND MovTipo.clave IN ('CONT.P','CONT.C')",
+    "recursiveDateField": "Cont.FechaEmision"
+  }
+]
