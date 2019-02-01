@@ -1,0 +1,37 @@
+[{
+		"active": "true",
+		"table": "Cte",
+		"fields": "Cte.Cliente, Cte.Nombre, Cte.Tipo, Cte.Categoria, Cte.Estatus, Cte.Estado, Cte.Pais",
+		"join": "Venta WITH (NOLOCK) ON Cte.Cliente = Venta.Cliente",
+		"filter": "CONVERT(date,Venta.UltimoCambio) BETWEEN DATEADD(day, -5, CONVERT(date,getdate())) AND CONVERT(date,getdate())",
+		"recursiveDateField": "",
+		"order": "",
+		"limit": "",
+		"comment1": "5",
+		"comment2": ""
+	},
+	{
+		"active": "true",
+		"table": "Art",
+		"fields": "Art.Articulo, Art.Descripcion1, Art.Tipo, Art.Categoria, Art.Grupo, Art.Familia, Art.Linea, Art.GenerarCXP, Art.SeFactura",
+		"join": "Venta WITH (NOLOCK) ON Art.Articulo = Venta.Articulo",
+		"filter": "CONVERT(date,Venta.UltimoCambio) BETWEEN DATEADD(day, -5, CONVERT(date,getdate())) AND CONVERT(date,getdate())",
+		"recursiveDateField": "",
+		"order": "",
+		"limit": "",
+		"comment1": "5",
+		"comment2": ""
+	},
+	{
+		"active": "true",
+		"table": "Prov",
+		"fields": "Prov.Proveedor, Prov.Nombre, Prov.Tipo, Prov.Estatus",
+		"join": "Compra WITH (NOLOCK) ON Prov.Proveedor = Venta.Proveedor",
+		"filter": "CONVERT(date,Compra.UltimoCambio) BETWEEN DATEADD(day, -5, CONVERT(date,getdate())) AND CONVERT(date,getdate())",
+		"recursiveDateField": "",
+		"order": "",
+		"limit": "",
+		"comment1": "5",
+		"comment2": ""
+	}
+]
