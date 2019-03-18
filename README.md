@@ -5,7 +5,7 @@ Licencia **GNU GPLv3** GNU GENERAL PUBLIC LICENSE Versión 3, 29 de Junio 2007.
 
 Los objetos de este repositorio integran Intelisis ERP con AWS Aurora para crear un Business Intelligence sobre RDS Aurora-MySQL.
 
-Ver más sobre Intelisis en [https://www.factorbi.com/intelisis?lang=es](http://www.factorbi.com/)
+Ver más sobre Intelisis en [www.factorbi.com/intelisis](https://www.factorbi.com/intelisis?lang=es)
 
 ### Integración de Intelisis con AWS
 La integración se realiza a través de [**Bipost Sync.**](https://factorbi.github.io/intelisis)
